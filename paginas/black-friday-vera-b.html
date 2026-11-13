@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Black Friday: gratis montage op de hooiberg Vera | Kippenvilla</title>
-<meta name="description" content="Black Friday bij Kippenvilla: van 20 t/m 30 november gratis montage op de hooiberg Vera, Vera XL en Vera DELUXE. Douglas hout, stahoogte, gratis bezorgd. Klanten geven ons een 9,5.">
+<title>Black Friday: gratis montage + gratis bezorgd | Kippenvilla</title>
+<meta name="description" content="Black Friday bij Kippenvilla: van 20 t/m 30 november gratis montage en gratis bezorging op de hooiberg Vera, Vera XL en Vera DELUXE. Douglas hout, stahoogte. Klanten geven ons een 9,5.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -312,6 +312,19 @@ footer a{color:#fff}
 .modellen button small{font-size:.74rem;color:var(--tekst-l)}
 .modellen button .pr{font-weight:600;font-size:.86rem;color:var(--tekst)}
 .modellen button.on{border-color:var(--goud);background:var(--creme)}
+.model-uitleg{margin:8px 0 2px;font-size:.88rem;color:var(--tekst);background:var(--creme);border-radius:10px;padding:.55rem .75rem;line-height:1.45}
+.model-uitleg b{color:var(--petrol)}
+.vergelijk-link{display:inline-block;font-size:.84rem;text-decoration:underline;margin:2px 0 4px}
+.vgl-wrap{overflow-x:auto;max-width:900px;margin:0 auto;background:#fff;border:1px solid var(--lijn);border-radius:var(--r)}
+table.vgl{width:100%;border-collapse:collapse;font-size:.93rem;min-width:520px}
+table.vgl th,table.vgl td{padding:.7rem .8rem;border-bottom:1px solid var(--lijn);text-align:center;vertical-align:middle}
+table.vgl th:first-child,table.vgl td:first-child{text-align:left;color:var(--petrol);font-weight:600;width:38%}
+table.vgl thead th{background:var(--creme);font-family:Montserrat;color:var(--petrol);font-size:1rem}
+table.vgl thead th small{display:block;font-family:Poppins;font-weight:400;color:var(--tekst-l);font-size:.78rem}
+table.vgl .ja{color:var(--groen);font-weight:700;font-size:1.1rem}
+table.vgl .nee{color:#b9b2a6;font-size:1.1rem}
+table.vgl tr:last-child td{border-bottom:0}
+table.vgl .btn{padding:.55rem .9rem;font-size:.86rem}
 .montage-rij{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .6rem;font-size:.92rem;margin:.1rem 0 .3rem}
 .montage-rij s{color:var(--tekst-l)}
 .montage-rij .gratis{background:var(--zwart);color:var(--bfgoud);border-radius:6px;padding:.12rem .5rem;font-weight:700;font-size:.82rem;letter-spacing:.06em}
@@ -356,7 +369,7 @@ section.s.bf .kop p{color:#dbe7ec}
 <!-- Black Friday-balk met aftelklok -->
 <div class="bfbar">
   <div class="wrap">
-    <span class="t1"><b>BLACK FRIDAY</b> &middot; Gratis montage*</span>
+    <span class="t1"><b>BLACK FRIDAY</b> &middot; Gratis montage* + gratis bezorgd</span>
     <span class="t2">De grootste actie die we ooit hielden. Nog maar:</span>
     <span class="tk" id="bfKlok"></span>
   </div>
@@ -397,7 +410,7 @@ section.s.bf .kop p{color:#dbe7ec}
       <div class="gallery">
         <div class="gal-main">
           <img id="galImg" src="" alt="">
-          <div class="gal-bf"><small>BLACK FRIDAY</small><b>Gratis montage*</b></div>
+          <div class="gal-bf"><small>BLACK FRIDAY</small><b>Gratis montage* + gratis bezorgd</b></div>
           <div class="gal-cap"><h2 id="galKop"></h2></div>
         </div>
         <div class="thumbs" id="thumbs"></div>
@@ -411,19 +424,22 @@ section.s.bf .kop p{color:#dbe7ec}
 
       <div class="bfkaart">
         <div class="lbl">BLACK FRIDAY &middot; T/M 30 NOVEMBER</div>
-        <div class="kop">Nu met <u>gratis montage*</u></div>
+        <div class="kop">Nu met <u>gratis montage*</u> + gratis bezorgd</div>
         <p>De grootste actie die we ooit hielden. Wij bouwen je hooiberg voor je op, t.w.v. <span id="montageWaarde">&euro; 424</span>.</p>
       </div>
 
       <div class="opt">
         <label class="t">Kies je model</label>
         <div class="modellen" id="optModel"></div>
+        <p class="model-uitleg" id="modelUitleg"></p>
+        <a class="vergelijk-link" href="#vergelijk">Bekijk de verschillen naast elkaar</a>
       </div>
 
       <div class="prijs">
         <span class="nu" id="prijsNu">&euro; 2.829</span>
       </div>
-      <div class="montage-rij">Montage <s id="montageVan">&euro; 424</s> <span class="gratis">GRATIS</span> <span style="color:var(--tekst-l);font-size:.85rem">+ gratis bezorgd</span></div>
+      <div class="montage-rij">Montage <s id="montageVan">&euro; 424</s> <span class="gratis">GRATIS</span> </div>
+      <div class="montage-rij">Bezorging <span class="gratis">GRATIS</span></div>
       <p class="ster-uitleg">*We sturen &eacute;&eacute;n monteur die de hooiberg voor je opbouwt. Bij het vasthouden van de wanden en het erop leggen van het dak help jij even mee, want dat kan &eacute;&eacute;n persoon niet alleen.</p>
 
       <div class="opt" id="rijKant">
@@ -445,11 +461,11 @@ section.s.bf .kop p{color:#dbe7ec}
 
       <div class="lever hout">
         <span>&#9888;&#65039;</span>
-        <div><b>Vanaf december gaat de houtprijs omhoog.</b> Elke hooiberg wordt op bestelling gemaakt van douglas hout. Bestel je in de Black Friday-week, dan heb je nog de huidige prijs &eacute;n gratis montage. Levertijd nu 5 tot 6 weken, dus voor het voorjaar staat hij in je tuin.</div>
+        <div><b>Vanaf december gaat de houtprijs omhoog.</b> Elke hooiberg wordt op bestelling gemaakt van douglas hout. Bestel je in de Black Friday-week, dan heb je nog de huidige prijs, gratis montage &eacute;n gratis bezorging. Levertijd nu 5 tot 6 weken, dus voor het voorjaar staat hij in je tuin.</div>
       </div>
 
       <div class="cta-stack">
-        <a class="btn btn-koop" href="#" id="ctaKoop">In winkelwagen, met gratis montage</a>
+        <a class="btn btn-koop" href="#" id="ctaKoop">In winkelwagen: gratis montage + gratis bezorgd</a>
         <a class="btn btn-groen-lijn" href="https://kippenvilla.nl/pages/contact">Plan een bezichtiging in Kerkdriel</a>
         <a class="btn btn-lijn" style="width:100%" href="https://kippenvilla.nl/pages/kippenhok-hooiberg-inspiratiebrochure" target="_blank" rel="noopener">Download de gratis brochure</a>
         <p class="contact-kop">Liever eerst even contact?</p>
@@ -504,6 +520,35 @@ section.s.bf .kop p{color:#dbe7ec}
   </div>
 </section>
 
+<!-- ================= VERGELIJKING ================= -->
+<section class="s creme" id="vergelijk">
+  <div class="wrap">
+    <div class="kop">
+      <h2>Vera, Vera XL of Vera DELUXE?</h2>
+      <p>Alle drie hetzelfde nachthok met stahoogte, van douglas hout. Het verschil zit in de ren en de afwerking.</p>
+    </div>
+    <div class="vgl-wrap">
+      <table class="vgl">
+        <thead><tr><th></th><th>Vera<small>&euro; 2.829</small></th><th>Vera XL<small>&euro; 3.997</small></th><th>Vera DELUXE<small>&euro; 4.987</small></th></tr></thead>
+        <tbody>
+          <tr><td>Nachthok 195 x 195 cm met stahoogte</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td></tr>
+          <tr><td>Plek voor 10 kippen</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td></tr>
+          <tr><td>Ren van 3 meter</td><td class="nee">&ndash;</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td></tr>
+          <tr><td>Dak over de hele ren: altijd droog</td><td class="nee">&ndash;</td><td class="nee">&ndash;</td><td class="ja">&#10003;</td></tr>
+          <tr><td>Zwart gaas, marter- en nertsproof</td><td class="nee">&ndash;</td><td class="nee">&ndash;</td><td class="ja">&#10003;</td></tr>
+          <tr><td>Luxe legnesten</td><td class="nee">&ndash;</td><td class="nee">&ndash;</td><td class="ja">&#10003;</td></tr>
+          <tr><td>Deelbare boerendeur met venster</td><td class="nee">&ndash;</td><td class="nee">&ndash;</td><td class="ja">&#10003;</td></tr>
+          <tr><td>Luik met schuif</td><td class="nee">&ndash;</td><td class="nee">&ndash;</td><td class="ja">&#10003;</td></tr>
+          <tr><td>Kies zwart of blank hout</td><td class="nee">&ndash;</td><td class="nee">&ndash;</td><td class="ja">&#10003;</td></tr>
+          <tr><td>Nachthok links of rechts</td><td class="nee">&ndash;</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td></tr>
+          <tr><td>Gratis montage* + gratis bezorgd t/m 30 november</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td></tr>
+          <tr><td></td><td><a class="btn btn-goud" href="#box" data-kies-model="vera">Kies Vera</a></td><td><a class="btn btn-goud" href="#box" data-kies-model="xl">Kies XL</a></td><td><a class="btn btn-goud" href="#box" data-kies-model="deluxe">Kies DELUXE</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <!-- ================= VOORDELEN IN EEN OOGOPSLAG ================= -->
 <section class="s">
   <div class="wrap">
@@ -529,7 +574,7 @@ section.s.bf .kop p{color:#dbe7ec}
       <p>Zo'n actie hebben we nog nooit gedaan. Na 30 november is hij voorbij.</p>
     </div>
     <div class="waarom">
-      <div><b>Gratis montage*</b><span>Wij bouwen hem voor je op. Normaal 15% extra, bij de DELUXE &euro; 748.</span></div>
+      <div><b>Gratis montage* + gratis bezorgd</b><span>We bezorgen hem gratis en bouwen hem voor je op. De montage is normaal 15% extra, bij de DELUXE &euro; 748.</span></div>
       <div><b>Nog de huidige prijs</b><span>Vanaf december gaat de houtprijs omhoog. Nu bestellen is voordeliger dan straks.</span></div>
       <div><b>Klaar voor het voorjaar</b><span>Op bestelling gemaakt in 5 tot 6 weken. In maart scharrelen je kippen al rond.</span></div>
     </div>
@@ -744,7 +789,7 @@ section.s.bf .kop p{color:#dbe7ec}
 <section class="s creme">
   <div class="wrap">
     <div class="eind bf">
-      <span class="bf-lbl">BLACK FRIDAY &middot; GRATIS MONTAGE*</span>
+      <span class="bf-lbl">BLACK FRIDAY &middot; GRATIS MONTAGE* + GRATIS BEZORGD</span>
       <h2>Je hooiberg, door ons opgebouwd.</h2>
       <div class="prijs"><span class="nu" id="prijsNu2">&euro; 2.829</span></div>
       <p><span id="eindNaam">Vera</span>, inclusief gratis montage en gratis bezorging. Alleen tot en met 30 november.</p>
@@ -777,7 +822,7 @@ section.s.bf .kop p{color:#dbe7ec}
 
 <!-- Sticky koopbalk op mobiel -->
 <div class="sticky" id="sticky">
-  <div class="p"><span id="prijsSticky">&euro; 2.829</span><small>Gratis montage* t/m 30 nov</small></div>
+  <div class="p"><span id="prijsSticky">&euro; 2.829</span><small>Gratis montage* + gratis bezorgd</small></div>
   <a class="btn btn-koop" href="#box">Bestellen</a>
   <a class="wa" href="https://wa.me/31851305813" aria-label="WhatsApp">&#128172;</a>
 </div>
@@ -798,6 +843,7 @@ const MODELLEN = {
     handle: "kippenhok-hooiberg-bouwpakket-vera-215x215x280cm",
     variant: () => 40145200939144, kant: false, hout: false,
     knopImg: cdn("files/1_25bdc20e-bc63-4619-81ea-07367291bf12.png?v=1763376195", 300),
+    uitleg: "<b>Vera:</b> alleen het nachthok met stahoogte, zonder ren. Wil je dat je kippen ook buiten veilig scharrelen? Kies dan de XL of DELUXE.",
     usp: ["Stahoogte: je loopt rechtop het nachthok in", "Ruim nachthok van 195 x 195 cm voor 10 kippen", "Douglas hout, gaat 10 tot 15 jaar mee", "Gratis bezorgd in NL en BE"],
     fotos: [
       [cdn("files/Kippenhok_hooiberg_Vera_Kippenvilla_douglas_hout__bouwpakket_2.png?v=1763376195"), "Geen kippenhok. Een <u>kippenvilla</u>."],
@@ -816,6 +862,7 @@ const MODELLEN = {
     handle: "kippenhok-hooiberg-bouwpakket-vera-xl-507x215x280cm",
     variant: s => s.kant === "rechts" ? 40402394513544 : 40147064225928, kant: true, hout: false,
     knopImg: cdn("files/2_476e7d9c-9ece-4f5a-818d-d85ceca464d5.png?v=1763376777", 300),
+    uitleg: "<b>Vera XL:</b> hetzelfde nachthok plus een ren van 3 meter met gaas. De ren heeft geen dak. Wil je de ren overdekt en altijd droog? Dat is de DELUXE.",
     usp: ["Nachthok met stahoogte plus een ren van 3 meter", "Ren met fijnmazig gaas: veilig tijdens ophokplicht", "Douglas hout, gaat 10 tot 15 jaar mee", "Gratis bezorgd in NL en BE"],
     fotos: [
       [cdn("files/2_476e7d9c-9ece-4f5a-818d-d85ceca464d5.png?v=1763376777"), "Nachthok <u>plus ren</u>."],
@@ -834,6 +881,7 @@ const MODELLEN = {
     variant: s => ({"links|zwart": 40422738002056, "links|blank": 40422738034824, "rechts|zwart": 40422738067592, "rechts|blank": 40422738100360})[s.kant + "|" + s.hout],
     kant: true, hout: true,
     knopImg: "img/product-nachthok-links.webp",
+    uitleg: "<b>Vera DELUXE:</b> de XL met het complete plaatje. Dak over de hele ren, zwart gaas, luxe legnesten, een deelbare boerendeur met venster en een luik met schuif. Kies zelf zwart of blank hout.",
     usp: ["Stahoogte in nachthok en ren: nooit meer bukken", "Dak over de hele ren: altijd droog en veilig", "Douglas hout, gaat 10 tot 15 jaar mee", "Gratis bezorgd in NL en BE"],
     fotos: [
       ["img/stahoogte-meisje-in-ren.webp", "Geen kippenhok. Een <u>kippenvilla</u>."],
@@ -896,7 +944,10 @@ function render(){
   optModel.querySelectorAll("button").forEach(b => b.classList.toggle("on", b.dataset.model === staat.model));
   $("ctaKoop").href = "https://kippenvilla.nl/products/" + m.handle + "?variant=" + m.variant(staat);
 }
-function kiesModel(key){ staat.model = key; render(); bouwGalerij(); }
+function kiesModel(key){ staat.model = key; render(); bouwGalerij(); $("modelUitleg").innerHTML = MODELLEN[key].uitleg; }
+document.querySelectorAll("[data-kies-model]").forEach(b => b.addEventListener("click", e => {
+  e.preventDefault(); kiesModel(b.dataset.kiesModel); $("box").scrollIntoView({behavior: "smooth", block: "start"});
+}));
 
 function seg(id, sleutel){
   const wrap = $(id);
