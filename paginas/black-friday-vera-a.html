@@ -287,7 +287,11 @@ footer a{color:#fff}
 .bfbar{background:var(--zwart);color:#fff;font-size:.88rem}
 .bfbar .wrap{display:flex;gap:.4rem 1.2rem;justify-content:center;align-items:center;flex-wrap:wrap;min-height:42px;padding-top:7px;padding-bottom:7px;text-align:center}
 .bfbar b{color:var(--bfgoud);letter-spacing:.06em}
-.bfbar .klok{font-variant-numeric:tabular-nums;font-weight:600}
+.bfbar{position:sticky;top:0;z-index:60}
+.bfbar .tk{display:inline-flex;gap:5px}
+.bfbar .tk span{background:#2b2b2b;border-radius:6px;padding:3px 6px;min-width:44px;font-weight:700;font-variant-numeric:tabular-nums;font-size:.95rem}
+.bfbar .tk small{font-weight:500;opacity:.7;margin-left:1px;font-size:.72rem}
+@media(max-width:600px){.bfbar .t2{display:none}.bfbar .wrap{gap:.3rem .7rem}.bfbar .tk span{min-width:38px;font-size:.88rem;padding:2px 5px}}
 .gal-bf{position:absolute;top:14px;left:14px;background:var(--zwart);color:#fff;border-radius:10px;padding:.55rem .8rem;line-height:1.15;box-shadow:0 4px 14px rgba(0,0,0,.3)}
 .gal-bf small{display:block;font-size:.72rem;letter-spacing:.14em;color:var(--bfgoud);font-weight:700}
 .gal-bf b{font-family:Montserrat;font-size:1.15rem}
@@ -337,9 +341,9 @@ section.s.bf .kop p{color:#cfcfcf}
 <!-- Black Friday-balk met aftelklok -->
 <div class="bfbar">
   <div class="wrap">
-    <span><b>BLACK FRIDAY</b> &middot; de grootste actie die we ooit hielden</span>
-    <span>Gratis montage* van 20 t/m 30 november</span>
-    <span class="klok" id="bfBalk"></span>
+    <span class="t1"><b>BLACK FRIDAY</b> &middot; Gratis montage*</span>
+    <span class="t2">De grootste actie die we ooit hielden. Nog maar:</span>
+    <span class="tk" id="bfKlok"></span>
   </div>
 </div>
 
@@ -391,11 +395,9 @@ section.s.bf .kop p{color:#cfcfcf}
       <h1 id="naam">Hooiberg Vera</h1>
 
       <div class="bfkaart">
-        <div class="lbl">BLACK FRIDAY &middot; 20 T/M 30 NOVEMBER</div>
+        <div class="lbl">BLACK FRIDAY &middot; T/M 30 NOVEMBER</div>
         <div class="kop">Nu met <u>gratis montage*</u></div>
         <p>De grootste actie die we ooit hielden. Wij bouwen je hooiberg voor je op, t.w.v. <span id="montageWaarde">&euro; 424</span>.</p>
-        <div class="aftel" id="aftel1"></div>
-        <div class="aftel-tekst" id="aftelTekst1"></div>
       </div>
 
       <div class="opt">
@@ -730,8 +732,7 @@ section.s.bf .kop p{color:#cfcfcf}
       <span class="bf-lbl">BLACK FRIDAY &middot; GRATIS MONTAGE*</span>
       <h2>Je hooiberg, door ons opgebouwd.</h2>
       <div class="prijs"><span class="nu" id="prijsNu2">&euro; 2.829</span></div>
-      <p><span id="eindNaam">Vera</span>, inclusief gratis montage en gratis bezorging. Alleen van 20 t/m 30 november.</p>
-      <div class="aftel" id="aftel2"></div>
+      <p><span id="eindNaam">Vera</span>, inclusief gratis montage en gratis bezorging. Alleen tot en met 30 november.</p>
       <div class="cta-wrap" style="justify-content:center">
         <a class="btn btn-koop" style="width:auto" href="#box">Kies je Vera</a>
         <a class="btn btn-wa" href="https://wa.me/31851305813">Vraag het via WhatsApp</a>
@@ -771,7 +772,6 @@ section.s.bf .kop p{color:#cfcfcf}
    Prijzen en variant-id's uit de Shopify-winkel (12-11-2026).
    MONTAGE_PCT: normale meerprijs voor plaatsing (15%), alleen gebruikt om de waarde van de gratis montage te tonen.
    ====================================================== */
-const ACTIE_START = new Date("2026-11-20T00:00:00+01:00");
 const ACTIE_EIND  = new Date("2026-11-30T23:59:59+01:00");
 const MONTAGE_PCT = 15;
 const CDN = "https://cdn.shopify.com/s/files/1/0359/8948/7752/";
@@ -782,7 +782,7 @@ const MODELLEN = {
     naam: "Hooiberg Vera", kort: "Vera", maat: "215 x 215 x 305 cm", sub: "Nachthok", prijs: 2829,
     handle: "kippenhok-hooiberg-bouwpakket-vera-215x215x280cm",
     variant: () => 40145200939144, kant: false, hout: false,
-    knopImg: cdn("files/Kippenhok_hooiberg_Vera_Kippenvilla_douglas_hout__bouwpakket_2.png?v=1763376195", 300),
+    knopImg: cdn("files/1_25bdc20e-bc63-4619-81ea-07367291bf12.png?v=1763376195", 300),
     usp: ["Stahoogte: je loopt rechtop het nachthok in", "Ruim nachthok van 195 x 195 cm voor 10 kippen", "Douglas hout, gaat 10 tot 15 jaar mee", "Gratis bezorgd in NL en BE"],
     fotos: [
       [cdn("files/Kippenhok_hooiberg_Vera_Kippenvilla_douglas_hout__bouwpakket_2.png?v=1763376195"), "Geen kippenhok. Een <u>kippenvilla</u>."],
@@ -900,23 +900,11 @@ function seg(id, sleutel){
 seg("optKant", "kant");
 seg("optHout", "hout");
 
-/* aftelklok: voor de start telt hij af naar 20 november, daarna naar het einde */
-function aftelHTML(ms){
-  const s = Math.max(0, Math.floor(ms / 1000));
-  const d = Math.floor(s / 86400), u = Math.floor(s % 86400 / 3600), mi = Math.floor(s % 3600 / 60), se = s % 60;
-  const p = n => String(n).padStart(2, "0");
-  return '<div><b>' + d + '</b><small>dagen</small></div><div><b>' + p(u) + '</b><small>uur</small></div><div><b>' + p(mi) + '</b><small>min</small></div><div><b>' + p(se) + '</b><small>sec</small></div>';
-}
+/* aftelklok in de balk: de pagina staat live van 20 t/m 30 november en telt af naar het einde */
 function tik(){
-  const nu = new Date();
-  let doel, tekst, balk;
-  if (nu < ACTIE_START) { doel = ACTIE_START; tekst = "Start vrijdag 20 november"; balk = "Start over "; }
-  else if (nu <= ACTIE_EIND) { doel = ACTIE_EIND; tekst = "Nog maar tot en met maandag 30 november"; balk = "Nog "; }
-  else { doel = nu; tekst = "De actie is voorbij"; balk = ""; }
-  const ms = doel - nu, h = aftelHTML(ms);
-  $("aftel1").innerHTML = h; $("aftel2").innerHTML = h; $("aftelTekst1").textContent = tekst;
-  const s = Math.max(0, Math.floor(ms / 1000));
-  $("bfBalk").textContent = balk ? balk + Math.floor(s / 86400) + "d " + Math.floor(s % 86400 / 3600) + "u " + Math.floor(s % 3600 / 60) + "m" : tekst;
+  const s = Math.max(0, Math.floor((ACTIE_EIND - new Date()) / 1000));
+  const p = n => String(n).padStart(2, "0");
+  $("bfKlok").innerHTML = '<span>' + Math.floor(s / 86400) + '<small>d</small></span><span>' + p(Math.floor(s % 86400 / 3600)) + '<small>u</small></span><span>' + p(Math.floor(s % 3600 / 60)) + '<small>m</small></span><span>' + p(s % 60) + '<small>s</small></span>';
 }
 tik(); setInterval(tik, 1000);
 
