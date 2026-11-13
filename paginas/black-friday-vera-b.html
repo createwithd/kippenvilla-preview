@@ -889,7 +889,7 @@ function render(){
   const montage = m.prijs * MONTAGE_PCT / 100;
   $("naam").textContent = m.naam; $("crumbNaam").textContent = m.kort; $("eindNaam").textContent = m.naam;
   for (const id of ["prijsNu", "prijsNu2", "prijsSticky"]) $(id).textContent = eur(m.prijs);
-  $("montageVan").textContent = eur(montage); $("montageWaarde").textContent = eur(montage);
+  $("montageVan").textContent = eur(montage); if ($("montageWaarde")) $("montageWaarde").textContent = eur(montage);
   $("usp").innerHTML = m.usp.map(u => '<li class="ok">' + u + '</li>').join("");
   $("specs").innerHTML = m.specs.map(r => "<tr><th>" + r[0] + "</th><td>" + r[1] + "</td></tr>").join("");
   $("rijKant").hidden = !m.kant; $("rijHout").hidden = !m.hout;

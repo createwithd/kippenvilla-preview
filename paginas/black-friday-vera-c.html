@@ -360,6 +360,8 @@ section.s.bf .kop p{color:#cfcfcf}
 .bfhero .tk{display:inline-flex;gap:6px}
 .bfhero .tk span{background:#2b2b2b;border:1px solid #3a3a3a;border-radius:8px;padding:4px 8px;min-width:50px;text-align:center;font:700 1.15rem/1.2 Montserrat,sans-serif;color:#fff;font-variant-numeric:tabular-nums}
 .bfhero .tk small{font:500 .72rem Poppins,sans-serif;opacity:.7;margin-left:2px}
+@media(max-width:899px){.bfhero .wrap{padding-top:16px;padding-bottom:16px;gap:10px}.bfhero .lbl{font-size:.68rem;letter-spacing:.14em}.bfhero h2{font-size:2.1rem;margin:.15rem 0 .3rem}.bfhero p{font-size:.92rem}.bfhero .klokrij{margin-top:.5rem}.bfhero .tk span{min-width:44px;font-size:1rem;padding:3px 6px}.bfhero .voordeel{display:flex;align-items:baseline;gap:.35rem;padding:6px 14px;font-size:.9rem}.bfhero .voordeel b{font-size:1.35rem;margin:0}}
+.box .rev{margin:2px 0 10px}
 </style>
 </head>
 <body>
@@ -412,19 +414,14 @@ section.s.bf .kop p{color:#cfcfcf}
 
     <!-- BUYING BOX -->
     <div class="box" id="box">
-      <div class="rev"><b>9,5</b> <span class="ster">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <a href="https://www.webwinkelkeur.nl/webshop/Kippenvilla_1208570/reviews" target="_blank" rel="noopener">479 beoordelingen</a> <span class="pill">Bekend van RTL, AD en Carlo Boszhard</span></div>
       <h1 id="naam">Hooiberg Vera</h1>
-
-      <div class="bfkaart">
-        <div class="lbl">BLACK FRIDAY &middot; T/M 30 NOVEMBER</div>
-        <div class="kop">Nu met <u>gratis montage*</u></div>
-        <p>De grootste actie die we ooit hielden. Wij bouwen je hooiberg voor je op, t.w.v. <span id="montageWaarde">&euro; 424</span>.</p>
-      </div>
 
       <div class="opt">
         <label class="t">Kies je model</label>
         <div class="modellen" id="optModel"></div>
       </div>
+
+      <div class="rev"><b>9,5</b> <span class="ster">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <a href="https://www.webwinkelkeur.nl/webshop/Kippenvilla_1208570/reviews" target="_blank" rel="noopener">479 beoordelingen</a> <span class="pill">Bekend van RTL, AD en Carlo Boszhard</span></div>
 
       <div class="prijs">
         <span class="nu" id="prijsNu">&euro; 2.829</span>
@@ -895,7 +892,7 @@ function render(){
   const montage = m.prijs * MONTAGE_PCT / 100;
   $("naam").textContent = m.naam; $("crumbNaam").textContent = m.kort; $("eindNaam").textContent = m.naam;
   for (const id of ["prijsNu", "prijsNu2", "prijsSticky"]) $(id).textContent = eur(m.prijs);
-  $("montageVan").textContent = eur(montage); $("montageWaarde").textContent = eur(montage);
+  $("montageVan").textContent = eur(montage); if ($("montageWaarde")) $("montageWaarde").textContent = eur(montage);
   $("usp").innerHTML = m.usp.map(u => '<li class="ok">' + u + '</li>').join("");
   $("specs").innerHTML = m.specs.map(r => "<tr><th>" + r[0] + "</th><td>" + r[1] + "</td></tr>").join("");
   $("rijKant").hidden = !m.kant; $("rijHout").hidden = !m.hout;
