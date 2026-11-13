@@ -312,6 +312,13 @@ footer a{color:#fff}
 .modellen button small{font-size:.74rem;color:var(--tekst-l)}
 .modellen button .pr{font-weight:600;font-size:.86rem;color:var(--tekst)}
 .modellen button.on{border-color:var(--goud);background:var(--creme)}
+.secnav{background:#fff;border-top:1px solid var(--lijn);border-bottom:1px solid var(--lijn);z-index:40}
+.secnav .wrap{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-bottom:8px;justify-content:flex-start}
+@media(min-width:1000px){.secnav .wrap{justify-content:center}}
+.secnav .wrap::-webkit-scrollbar{display:none}
+.secnav a{flex:0 0 auto;white-space:nowrap;color:var(--petrol);font-weight:600;font-size:.9rem;padding:.45rem .9rem;border-radius:999px;border:1px solid var(--lijn)}
+.secnav a:hover{border-color:var(--goud);color:var(--goud-d)}
+section[id]{scroll-margin-top:70px}
 .model-uitleg{margin:8px 0 2px;font-size:.88rem;color:var(--tekst);background:var(--creme);border-radius:10px;padding:.55rem .75rem;line-height:1.45}
 .model-uitleg b{color:var(--petrol)}
 .vergelijk-link{display:inline-block;font-size:.84rem;text-decoration:underline;margin:2px 0 4px}
@@ -328,6 +335,13 @@ table.vgl .btn{padding:.55rem .9rem;font-size:.86rem}
 .montage-rij{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .6rem;font-size:.92rem;margin:.1rem 0 .3rem}
 .montage-rij s{color:var(--tekst-l)}
 .montage-rij .gratis{background:var(--zwart);color:var(--bfgoud);border-radius:6px;padding:.12rem .5rem;font-weight:700;font-size:.82rem;letter-spacing:.06em}
+.gratisblok{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));background:var(--bfgoud);color:var(--zwart);border-radius:12px;margin:.35rem 0 .45rem;overflow:hidden}
+.gratisblok div{padding:.55rem .85rem;display:flex;flex-direction:column;line-height:1.2}
+.gratisblok div + div{border-left:1px solid rgba(0,0,0,.15)}
+.gratisblok small{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;opacity:.75}
+.gratisblok span{display:flex;align-items:baseline;gap:.4rem;flex-wrap:wrap}
+.gratisblok s{font-size:.9rem;color:#5b4a26}
+.gratisblok b{font:800 1.2rem Montserrat,sans-serif;letter-spacing:.02em}
 .ster-uitleg{font-size:.8rem;color:var(--tekst-l);margin:0 0 12px;line-height:1.45}
 .lever.hout{background:#fff6ea;border:1px solid #efd9b4}
 .lever.hout b{color:#8a5a12}
@@ -438,8 +452,10 @@ section.s.bf .kop p{color:#dbe7ec}
       <div class="prijs">
         <span class="nu" id="prijsNu">&euro; 2.829</span>
       </div>
-      <div class="montage-rij">Montage <s id="montageVan">&euro; 424</s> <span class="gratis">GRATIS</span> </div>
-      <div class="montage-rij">Bezorging <span class="gratis">GRATIS</span></div>
+      <div class="gratisblok">
+        <div><small>Montage*</small><span><s id="montageVan">&euro; 424</s> <b>GRATIS</b></span></div>
+        <div><small>Bezorging</small><span><b>GRATIS</b></span></div>
+      </div>
       <p class="ster-uitleg">*We sturen &eacute;&eacute;n monteur die de hooiberg voor je opbouwt. Bij het vasthouden van de wanden en het erop leggen van het dak help jij even mee, want dat kan &eacute;&eacute;n persoon niet alleen.</p>
 
       <div class="opt" id="rijKant">
@@ -461,7 +477,7 @@ section.s.bf .kop p{color:#dbe7ec}
 
       <div class="lever hout">
         <span>&#9888;&#65039;</span>
-        <div><b>Vanaf december gaat de houtprijs omhoog.</b> Elke hooiberg wordt op bestelling gemaakt van douglas hout. Bestel je in de Black Friday-week, dan heb je nog de huidige prijs, gratis montage &eacute;n gratis bezorging. Levertijd nu 5 tot 6 weken, dus voor het voorjaar staat hij in je tuin.</div>
+        <div><b>Vanaf december gaat de houtprijs omhoog.</b> Elke hooiberg wordt op bestelling gemaakt van douglas hout. Bestel je in de Black Friday-week, dan heb je nog de huidige prijs, gratis montage &eacute;n gratis bezorging. Levertijd nu 5 tot 6 weken.</div>
       </div>
 
       <div class="cta-stack">
@@ -520,6 +536,19 @@ section.s.bf .kop p{color:#dbe7ec}
   </div>
 </section>
 
+<!-- Navigatie onder het koopblok -->
+<nav class="secnav" aria-label="Op deze pagina">
+  <div class="wrap">
+    <a href="#verhaal">Waarom een Vera</a>
+    <a href="#montage">Gratis montage</a>
+    <a href="#klantfotos">Klantfoto's</a>
+    <a href="#bezoek">Kom kijken</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#vergelijk">Vergelijk modellen</a>
+    <a href="#faq">Vragen</a>
+  </div>
+</nav>
+
 <!-- ================= VOORDELEN IN EEN OOGOPSLAG ================= -->
 <section class="s">
   <div class="wrap">
@@ -553,7 +582,7 @@ section.s.bf .kop p{color:#dbe7ec}
 </section>
 
 <!-- ================= STORYTELLING ================= -->
-<section class="s creme">
+<section class="s creme" id="verhaal">
   <div class="wrap">
 
     <div class="story">
@@ -665,7 +694,7 @@ section.s.bf .kop p{color:#dbe7ec}
 </section>
 
 <!-- ================= KLANTFOTO'S ================= -->
-<section class="s">
+<section class="s" id="klantfotos">
   <div class="wrap">
     <div class="kop">
       <h2>Zo staat hij bij anderen</h2>
@@ -708,7 +737,7 @@ section.s.bf .kop p{color:#dbe7ec}
 </section>
 
 <!-- ================= REVIEWS ================= -->
-<section class="s creme">
+<section class="s creme" id="reviews">
   <div class="wrap">
     <div class="kop">
       <h2>Wat klanten zeggen</h2>
@@ -756,7 +785,7 @@ section.s.bf .kop p{color:#dbe7ec}
 </section>
 
 <!-- ================= FAQ ================= -->
-<section class="s">
+<section class="s" id="faq">
   <div class="wrap">
     <div class="kop">
       <h2>Veelgestelde vragen</h2>
