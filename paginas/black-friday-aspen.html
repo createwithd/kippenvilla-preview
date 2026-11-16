@@ -490,8 +490,8 @@ table.hk td.k{background:#f1faf5}
       <div class="opt">
         <label class="t">Met of zonder ren?</label>
         <div class="keuze2" id="optRen">
-          <button type="button" data-v="ja" class="on"><b>Met ren</b><small>Ren van 2 meter met anti-graafstrook</small></button>
-          <button type="button" data-v="nee"><b>Alleen het hok</b><small>Je kippen scharrelen vrij of in je eigen ren</small></button>
+          <button type="button" data-v="ja"><b>Met ren</b><small>Ren van 2 meter met anti-graafstrook</small></button>
+          <button type="button" data-v="nee" class="on"><b>Alleen het hok</b><small>Je kippen scharrelen vrij of in je eigen ren</small></button>
         </div>
       </div>
       <div class="opt" id="rijDeal">
@@ -796,7 +796,13 @@ const CAP = {"6":5, "10":10};
 
 const eur = n => "€ " + Math.round(n).toLocaleString("nl-NL");
 const $ = id => document.getElementById(id);
-const st = {maat:"10", ren:"ja", deal:"deur", lever:"bezorg"};
+const st = {maat:"10", ren:"nee", deal:"deur", lever:"bezorg"};
+/* ads kunnen een model voorselecteren: ?maat=6&ren=nee&lever=ophaal */
+(function(){ const q = new URLSearchParams(location.search);
+  if (["6","10"].includes(q.get("maat"))) st.maat = q.get("maat");
+  if (["ja","nee"].includes(q.get("ren"))) st.ren = q.get("ren");
+  if (["bezorg","ophaal"].includes(q.get("lever"))) st.lever = q.get("lever");
+  if (["deur","korting"].includes(q.get("deal"))) st.deal = q.get("deal"); })();
 const key = () => st.maat + "|" + st.ren;
 
 function regel(){
@@ -899,6 +905,7 @@ tik(); setInterval(tik, 1000);
 const box = $("box"), sticky = $("sticky");
 new IntersectionObserver(([e]) => sticky.classList.toggle("show", !e.isIntersecting && e.boundingClientRect.top < 0), {threshold:0}).observe(box);
 
+zet("optMaat","maat"); zet("optRen","ren"); zet("optLever","lever"); zet("optDeal","deal");
 render(); bouwGalerij();
 </script>
 </body>
