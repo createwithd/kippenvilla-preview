@@ -1,0 +1,750 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Fase 4 · Deep dive</title><style>:root{--goud:#ae8c4c;--petrol:#094a60;--bg:#f8f4ef;--ink:#1d1d1b;--line:#e4dccf}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,'Segoe UI',sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:28px 16px 64px}
+header{background:var(--petrol);color:#fff;padding:22px 16px}header .in{max-width:1000px;margin:0 auto}
+header a{color:#fff;opacity:.8;font-size:14px;text-decoration:none}header h1{margin:6px 0 4px;font-size:26px;line-height:1.2}
+header p{margin:0;opacity:.85;font-size:14px}
+h1,h2,h3{color:var(--petrol);line-height:1.25}h2{margin-top:2em;border-bottom:2px solid var(--goud);padding-bottom:4px}
+.tbl{overflow-x:auto;margin:1em 0;background:#fff;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;font-size:13.5px;min-width:640px;width:100%}th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f1ebe1;color:var(--petrol)}code{background:#efe8dc;padding:1px 4px;border-radius:3px}
+blockquote{border-left:4px solid var(--goud);margin:1em 0;padding:.4em 1em;background:#fff}
+.cards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{display:block;background:#fff;border:1px solid var(--line);border-left:5px solid var(--goud);border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit}
+.card:hover{border-left-color:var(--petrol)}.card b{color:var(--petrol);display:block;font-size:17px}.card span{font-size:14px;color:#555}
+.note{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:0 0 20px;font-size:15px}
+nav.pn{display:flex;justify-content:space-between;gap:10px;margin-top:40px;font-size:14px}nav.pn a{color:var(--petrol)}
+</style></head><body><header><div class="in"><a href="./">← Alle fases</a><h1>Fase 4 · Deep dive</h1><p>Merkfundament Kippenvilla · juli 2026</p></div></header><div class="wrap"><h1>Fase 4 - Avatar Deep Dive: Kippenvilla.nl</h1>
+<h2>Deep Dive Scope</h2>
+<ul>
+<li>Gekozen route: drie persona's naast elkaar (op verzoek), i.p.v. één of
+  brand-breed: <strong>De Bloedluis-Herstarter (#8)</strong>, <strong>De Tuintrotse
+  Statushouder (#4)</strong>, <strong>De Drukke Pragmaticus (#9)</strong>.</li>
+<li>Waarom deze drie logisch zijn: samen dekken ze de twee focuslijnen
+  (Nestera x2, hooiberg x1) met de hoogste scorecard-totalen (18, 15, 14).</li>
+</ul>
+<blockquote>
+<p>Let op: interne monologen en "quotes van anderen" in deze deep dive zijn
+<strong>[illustratief, niet verbatim]</strong> - realistische reconstructies gebaseerd op
+patronen uit fase 2 (bloedluis-forums, klantreviews), niet letterlijke
+citaten van een specifiek persoon. Gebruikt om communicatie te verbeteren,
+niet om kwetsbaarheden uit te buiten.</p>
+</blockquote>
+<hr />
+<h1>DEEP DIVE 1 - De Bloedluis-Herstarter (#8, Nestera)</h1>
+<h2>2. Demographic Info</h2>
+<ul>
+<li>Naam (fictief, representatief): Marieke</li>
+<li>Leeftijd: 42</li>
+<li>Levensfase: gezin met opgroeiende kinderen, houdt al 3-4 jaar kippen</li>
+<li>Inkomen/koopkracht: modaal tot boven modaal</li>
+<li>Locatie/markt: NL, huis met tuin in een dorp of buitenwijk</li>
+<li>Samenvatting: Marieke hield haar kippen altijd in een houten hok, tot een
+  hardnekkige bloedluisplaag haar dwong structureel op zoek te gaan naar een
+  oplossing die het probleem écht wegneemt, niet alleen tijdelijk bestrijdt.</li>
+</ul>
+<h2>3. Core Problem</h2>
+<ul>
+<li>Dominant pijnpunt: bloedluis blijft terugkomen, ondanks bestrijdingspogingen</li>
+<li>Praktische pijn: uren kwijt aan schoonmaken, stomen, ontsmetten</li>
+<li>Emotionele pijn: schuldgevoel dat haar kippen lijden onder iets wat ze niet
+  onder controle krijgt</li>
+<li>Sociale pijn: gevoel van falen als verzorger</li>
+</ul>
+<h2>4. Top 5 Emotional Triggers</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Waar komt het vandaan?</th>
+<th>Hoe speelt het product hierop in?</th>
+<th>Voorbeeldzin in klanttaal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kippen die niet meer graag op stok gaan</td>
+<td>Bloedluis actief 's nachts</td>
+<td>Glad materiaal, minder schuilplekken</td>
+<td>"Ze gingen niet meer graag naar binnen, en ik wist waarom."</td>
+</tr>
+<tr>
+<td>Bloedvlekjes op eieren</td>
+<td>Zichtbaar bewijs van het probleem</td>
+<td>Vlakke, makkelijk te checken bodem</td>
+<td>"Elke ochtend die vlekjes zien, dat werkt op je gemoed."</td>
+</tr>
+<tr>
+<td>Elk weekend schoonmaken</td>
+<td>Terugkerende tijdsinvestering zonder resultaat</td>
+<td>Schoonspuiten in minuten</td>
+<td>"Weer een zaterdag kwijt aan dat hok."</td>
+</tr>
+<tr>
+<td>Gevoel van falen als verzorger</td>
+<td>Zelfkritiek na herhaald mislukken</td>
+<td>Garantie en bewezen materiaal geven grip terug</td>
+<td>"Ik dacht dat ik het gewoon niet goed deed."</td>
+</tr>
+<tr>
+<td>Wantrouwen na eerdere mislukte oplossingen</td>
+<td>Meerdere producten al geprobeerd</td>
+<td>Concrete materiaalargumenten als geloofwaardig bewijs</td>
+<td>"Ik geloof het pas als ik het zelf zie werken."</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5. Top 5 Deep Fears</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Angst</th>
+<th>Waarom ligt dit gevoelig?</th>
+<th>Effect op koopgedrag</th>
+<th>Interne monoloog [illustratief]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kippen worden ziek van bloedarmoede</td>
+<td>Verantwoordelijkheidsgevoel voor hun welzijn</td>
+<td>Vergroot bereidheid tot investeren</td>
+<td>"Wat als ik dit te laat doorheb?"</td>
+</tr>
+<tr>
+<td>Ze is hier zelf niet goed genoeg in</td>
+<td>Raakt zelfbeeld als verzorger</td>
+<td>Zoekt merken die zekerheid bieden</td>
+<td>"Misschien kan ik dit gewoon niet goed."</td>
+</tr>
+<tr>
+<td>Weer geld verspillen aan iets dat niet werkt</td>
+<td>Meerdere eerdere mislukkingen</td>
+<td>Wil bewijs/garantie vóór aankoop</td>
+<td>"Nog een setje spullen dat toch niet helpt?"</td>
+</tr>
+<tr>
+<td>Oordeel van partner over tijdsbesteding</td>
+<td>Relationele spanning rond de hobby</td>
+<td>Wil het onderwerp definitief afsluiten</td>
+<td>"Hij vraagt al hoe lang dit nog moet duren."</td>
+</tr>
+<tr>
+<td>Kippen zijn structureel ongelukkig</td>
+<td>Dierenwelzijn als kernwaarde</td>
+<td>Maakt welzijnsboodschap krachtig</td>
+<td>"Ze verdienen gewoon beter dan dit."</td>
+</tr>
+</tbody>
+</table></div>
+<h2>6. How Fears Affect Relationships</h2>
+<ul>
+<li>Partner: lichte spanning over tijd/geld aan "dat gedoe met de kippen"</li>
+<li>Kinderen: merken de stress rond het hok, minder plezier in het hobbyproject</li>
+<li>Vrienden: vermijdt het onderwerp een beetje, licht gegeneerd</li>
+<li>Collega's: niet relevant</li>
+<li>Zelfbeeld: twijfel aan eigen competentie als dierenverzorger</li>
+</ul>
+<h2>7. Painful Quotes From Others [illustratief]</h2>
+<ul>
+<li>Partner: "Ga je dat hok nou nog een keer aanpakken, of...?"</li>
+<li>Vrienden: "Ik zou allang gewoon een nieuw hok gekocht hebben."</li>
+<li>Online comments: "Als je het vaker had schoongemaakt, was dit niet gebeurd."</li>
+</ul>
+<h2>8. Failed Past Solutions</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Eerdere poging</th>
+<th>Waarom werkte het niet?</th>
+<th>Interne monoloog erna [illustratief]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Diatomeeënaarde strooien</td>
+<td>Kwam terug na regen/vocht</td>
+<td>"Even leek het te werken..."</td>
+</tr>
+<tr>
+<td>Stoomreiniger inhuren</td>
+<td>Tijdrovend, effect tijdelijk</td>
+<td>"Weer een zaterdag verloren."</td>
+</tr>
+<tr>
+<td>Chemische spray</td>
+<td>Twijfel over veiligheid van eieren</td>
+<td>"Ik durfde de eieren niet meer op te eten."</td>
+</tr>
+<tr>
+<td>Roofmijten uitzetten</td>
+<td>Werkte niet bij kouder weer</td>
+<td>"Bij de eerste kou waren ze weg, en de bloedluis terug."</td>
+</tr>
+<tr>
+<td>Hok verbouwen, kieren dichten</td>
+<td>Hout werkt, nieuwe kieren ontstaan</td>
+<td>"Net gedicht, en drie maanden later weer een kier."</td>
+</tr>
+</tbody>
+</table></div>
+<h2>9. What They Refuse To Do</h2>
+<ul>
+<li>Geen chemische middelen meer, uit zorg om de eieren</li>
+<li>Geen wekelijkse stoombehandelingen (geen tijd)</li>
+<li>Geen nieuw houten hok - het vertrouwen is op</li>
+<li>Geen risico meer op het verliezen van kippen aan bloedarmoede</li>
+</ul>
+<h2>10. Dream Transformation</h2>
+<ul>
+<li>Praktisch: een hok dat in 5 minuten schoongespoten is</li>
+<li>Emotioneel: rust, geen avondlijke controle-rondes meer uit angst</li>
+<li>Sociaal: trots kunnen zeggen dat het probleem is opgelost</li>
+</ul>
+<h2>11. Post-Transformation Quotes [illustratief]</h2>
+<ul>
+<li>Partner: "Sinds dat nieuwe hok hoor ik je nooit meer over bloedluis."</li>
+<li>Vriend: "Jij had toch dat gedoe met die luizen? Opgelost dus?"</li>
+<li>De klant zelf: "Ik hoef er niet meer aan te denken. Dat alleen al is het waard."</li>
+</ul>
+<h2>12. Market Psychology</h2>
+<ul>
+<li>Wat ze geloven dat succes bepaalt: de juiste materiaalkeuze, niet harder
+  werken maar slimmer kiezen</li>
+<li>Wat ze moeten loslaten: het idee dat een houten hok "toch wel oplosbaar" is
+  met genoeg inzet</li>
+<li>Wie/wat ze de schuld geven: soms zichzelf (te laat ingegrepen), soms het
+  vorige hok/de fabrikant</li>
+</ul>
+<h3>Top 5 Objections Holding Them Back</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Bezwaar</th>
+<th>Wat zit eronder?</th>
+<th>Hoe we dit adresseren</th>
+<th>Bewijs/content die helpt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Is kunststof niet gewoon lelijk?"</td>
+<td>Geen compromis willen op uitstraling</td>
+<td>Styling/donkere kleuren tonen</td>
+<td>Productfoto's in echte tuinen</td>
+</tr>
+<tr>
+<td>"Werkt dit echt, of is het marketing?"</td>
+<td>Wantrouwen na eerdere mislukkingen</td>
+<td>Concrete materiaalargumenten + garantie</td>
+<td>Vergelijking met Omlet (fase 2)</td>
+</tr>
+<tr>
+<td>"Is dit niet duurder voor hetzelfde probleem?"</td>
+<td>Prijsperceptie</td>
+<td>Nestera vs. Omlet-vergelijking tonen</td>
+<td>25 jaar garantie expliciet</td>
+</tr>
+<tr>
+<td>"Wat als het toch een keer bloedluis krijgt?"</td>
+<td>Angst voor herhaling</td>
+<td>Eerlijk communiceren: minder schuilplekken, geen 100%-garantie</td>
+<td>Transparante productinfo</td>
+</tr>
+<tr>
+<td>"Kan ik dit zelf plaatsen?"</td>
+<td>Praktische zorg</td>
+<td>Duidelijke montage-info</td>
+<td>Stap-voor-stap instructies</td>
+</tr>
+</tbody>
+</table></div>
+<h2>13. Messaging Implications</h2>
+<ul>
+<li>Beste hooks: "Nooit meer 's avonds controleren op bloedluis"</li>
+<li>Beste beloftes: minder schuilplekken, snel schoon te spuiten, 25 jaar garantie</li>
+<li>Gevoelige woorden: rust, opluchting, eindelijk</li>
+<li>Woorden om te vermijden: "gegarandeerd bloedluis-vrij" (niet houdbaar)</li>
+<li>Content angles: eerlijke vergelijking kunststof vs. hout, klantverhalen na een plaag</li>
+<li>Ad angles: probleem-oplossing format, voor-na</li>
+<li>Product page angles: materiaal + garantie + reinigingsgemak vooraan</li>
+<li>Email angles: geruststellende opvolgmail na eerste contact</li>
+</ul>
+<hr />
+<h1>DEEP DIVE 2 - De Tuintrotse Statushouder (#4, Hooiberg)</h1>
+<h2>2. Demographic Info</h2>
+<ul>
+<li>Naam (fictief): Willemijn</li>
+<li>Leeftijd: 47</li>
+<li>Levensfase: samenwonend, huis met ruime, verzorgde tuin</li>
+<li>Inkomen/koopkracht: boven modaal, besteedt bewust aan huis en tuin</li>
+<li>Locatie/markt: NL, buitenwijk of dorp met grotere kavel</li>
+<li>Samenvatting: Willemijn ziet haar tuin als een verlengstuk van haar huis en
+  wil dat elk element - inclusief het kippenhok - daar recht aan doet.</li>
+</ul>
+<h2>3. Core Problem</h2>
+<ul>
+<li>Dominant pijnpunt: standaard kippenhokken doen afbreuk aan een zorgvuldig
+  aangelegde tuin</li>
+<li>Praktische pijn: geen hok gevonden dat qua stijl past</li>
+<li>Emotionele pijn: irritatie/teleurstelling als een lelijk object het
+  totaalbeeld verstoort</li>
+<li>Sociale pijn: bezoek en buren zien de tuin, geen "afknapper" willen tonen</li>
+</ul>
+<h2>4. Top 5 Emotional Triggers</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Waar komt het vandaan?</th>
+<th>Hoe speelt het product hierop in?</th>
+<th>Voorbeeldzin in klanttaal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Een lelijk standaardhok bij anderen zien</td>
+<td>Wil dat zelf vermijden</td>
+<td>Hooiberg als esthetisch alternatief</td>
+<td>"Ik wilde geen bouwmarkt-hok in mijn tuin."</td>
+</tr>
+<tr>
+<td>Tuin laten zien aan bezoek</td>
+<td>Trots op het totaalbeeld</td>
+<td>Hooiberg wordt gesprekonderwerp</td>
+<td>"Iedereen vraagt naar dat hok."</td>
+</tr>
+<tr>
+<td>Seizoensgebonden tuinplannen (voorjaar)</td>
+<td>Natuurlijk aankoopmoment</td>
+<td>Sluit aan bij "de tuin eindelijk afmaken"</td>
+<td>"Dit voorjaar maak ik de tuin eindelijk af."</td>
+</tr>
+<tr>
+<td>Inspiratiebeelden zien (Pinterest, buren)</td>
+<td>Verlangen naar het landelijke plaatje</td>
+<td>Authentieke hooiberg-uitstraling</td>
+<td>"Zo eentje wilde ik ook."</td>
+</tr>
+<tr>
+<td>Spijt van een eerder te goedkoop hok</td>
+<td>Wil dit keer geen compromis</td>
+<td>Kwaliteit en afwerking vooropstellen</td>
+<td>"Vorige keer kocht ik iets goedkoops, en daar heb ik spijt van."</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5. Top 5 Deep Fears</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Angst</th>
+<th>Waarom ligt dit gevoelig?</th>
+<th>Effect op koopgedrag</th>
+<th>Interne monoloog [illustratief]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>De tuin voelt nooit "af"</td>
+<td>Perfectionisme rond het eigen huis</td>
+<td>Blijft bereid te investeren</td>
+<td>"Er mist altijd nog iets."</td>
+</tr>
+<tr>
+<td>Oordeel van bezoek over een lelijk hok</td>
+<td>Sociale zichtbaarheid van de tuin</td>
+<td>Kiest bewust voor uitstraling</td>
+<td>"Stel je voor dat mensen dat hok zien staan."</td>
+</tr>
+<tr>
+<td>Weer een verkeerde, spijtige aankoop</td>
+<td>Eerdere teleurstelling</td>
+<td>Wil zekerheid vooraf</td>
+<td>"Ik wil dit niet nog een keer verkeerd doen."</td>
+</tr>
+<tr>
+<td>Kwaliteit valt tegen ondanks de prijs</td>
+<td>Reviews tonen soms bouwissues</td>
+<td>Vraagt bewijs van kwaliteitscontrole</td>
+<td>"Voor die prijs mag er niks aan mankeren."</td>
+</tr>
+<tr>
+<td>Hok gaat niet lang mee</td>
+<td>Wil een langetermijninvestering</td>
+<td>Let sterk op garantie/levensduur</td>
+<td>"Dit moet gewoon jaren meegaan."</td>
+</tr>
+</tbody>
+</table></div>
+<h2>6. How Fears Affect Relationships</h2>
+<ul>
+<li>Partner: gezamenlijke tuinbeslissingen, kan discussie geven over budget</li>
+<li>Kinderen: vinden het hok vooral leuk, weinig spanning</li>
+<li>Vrienden: tuin is onderwerp van gesprek bij bezoek, sociale trots</li>
+<li>Collega's: niet relevant</li>
+<li>Zelfbeeld: identiteit als iemand met smaak en een verzorgd huis</li>
+</ul>
+<h2>7. Painful Quotes From Others [illustratief]</h2>
+<ul>
+<li>Partner: "Moet het per se dat dure hok zijn?"</li>
+<li>Vrienden: "Ik zou niet zoveel geld aan een kippenhok uitgeven."</li>
+<li>Online comments: "Overdreven voor een paar kippen, toch?"</li>
+</ul>
+<h2>8. Failed Past Solutions</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Eerdere poging</th>
+<th>Waarom werkte het niet?</th>
+<th>Interne monoloog erna [illustratief]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Goedkoop bouwpakket</td>
+<td>Zag er snel verweerd uit</td>
+<td>"Binnen een jaar zag het er sjofel uit."</td>
+</tr>
+<tr>
+<td>Zelf een standaardhok geverfd</td>
+<td>Paste kleurtechnisch niet bij de tuin</td>
+<td>"Het kleurde nergens bij."</td>
+</tr>
+<tr>
+<td>Hok achterin de tuin verstopt</td>
+<td>Voelde als wegmoffelen, geen echte oplossing</td>
+<td>"Ik verstopte het liever dan dat ik er trots op was."</td>
+</tr>
+<tr>
+<td>Zelf bouwen overwogen</td>
+<td>Geen tijd/vaardigheid, project bleef liggen</td>
+<td>"Het lag maandenlang als houtstapel in de schuur."</td>
+</tr>
+<tr>
+<td>Kunststof hok overwogen</td>
+<td>Paste niet bij de landelijke stijl</td>
+<td>"Dat paste gewoon niet bij onze tuin."</td>
+</tr>
+</tbody>
+</table></div>
+<h2>9. What They Refuse To Do</h2>
+<ul>
+<li>Geen zichtbaar goedkoop of "plastic" object in de tuin</li>
+<li>Niet zelf klussen/bouwen</li>
+<li>Geen genoegen nemen met "het is maar voor de kippen"</li>
+<li>Niet wachten tot het "een keer goed komt" - het moet in één keer goed zijn</li>
+</ul>
+<h2>10. Dream Transformation</h2>
+<ul>
+<li>Praktisch: een hok dat past bij de rest van de tuininrichting</li>
+<li>Emotioneel: trots in plaats van irritatie bij het zien van het hok</li>
+<li>Sociaal: complimenten van bezoek in plaats van neutrale/negatieve reacties</li>
+</ul>
+<h2>11. Post-Transformation Quotes [illustratief]</h2>
+<ul>
+<li>Partner: "Dit hok maakt de tuin echt af."</li>
+<li>Vriend: "Waar heb je dat hok vandaan, dat wil ik ook."</li>
+<li>De klant zelf: "Nu is de tuin precies zoals ik het voor ogen had."</li>
+</ul>
+<h2>12. Market Psychology</h2>
+<ul>
+<li>Wat ze geloven dat succes bepaalt: kwaliteit en stijlkeuze, niet de laagste prijs</li>
+<li>Wat ze moeten loslaten: het idee dat een kippenhok "gewoon functioneel" hoeft te zijn</li>
+<li>Wie/wat ze de schuld geven: zichzelf bij een eerdere te goedkope keuze,
+  soms de fabrikant van een tegenvallend eerder product</li>
+</ul>
+<h3>Top 5 Objections Holding Them Back</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Bezwaar</th>
+<th>Wat zit eronder?</th>
+<th>Hoe we dit adresseren</th>
+<th>Bewijs/content die helpt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Is dit niet te duur voor een kippenhok?"</td>
+<td>Waardeperceptie</td>
+<td>Positioneren als tuininvestering</td>
+<td>Gemiddeld ~€2.000-besteding (fase 2)</td>
+</tr>
+<tr>
+<td>"Klopt de kwaliteit (na reviews over scheve panelen)?"</td>
+<td>Vertrouwen</td>
+<td>Transparant over kwaliteitscontrole/nazorg</td>
+<td>DEFECT-flow, garantietermijn</td>
+</tr>
+<tr>
+<td>"Past dit wel bij mijn tuin?"</td>
+<td>Visuele twijfel</td>
+<td>Foto's in echte tuinen, configurator</td>
+<td>3D-configurator (in ontwikkeling)</td>
+</tr>
+<tr>
+<td>"Is de levertijd (5-6 weken) niet te lang?"</td>
+<td>Ongeduld</td>
+<td>Uitleggen waarom vakwerk tijd kost</td>
+<td>Verwachtingsmanagement in copy</td>
+</tr>
+<tr>
+<td>"Kan dit ook op maat?"</td>
+<td>Wens tot personalisatie</td>
+<td>Verwijzen naar de configurator (ramen, ren-lengte) i.p.v. volledig maatwerk</td>
+<td>Configurator-opties communiceren</td>
+</tr>
+</tbody>
+</table></div>
+<h2>13. Messaging Implications</h2>
+<ul>
+<li>Beste hooks: "Dit hok krijgt vaker complimenten dan je border"</li>
+<li>Beste beloftes: uitstraling + kwaliteit + jarenlang plezier</li>
+<li>Gevoelige woorden: trots, blikvanger, verzorgd, tijdloos</li>
+<li>Woorden om te vermijden: "goedkoop", "budget", "basic"</li>
+<li>Content angles: tuin-inspiratie, klantfoto's in context</li>
+<li>Ad angles: voor/na tuinbeeld, "welke hooiberg past bij jouw tuin"</li>
+<li>Product page angles: sfeerbeelden, materiaalkwaliteit uitlichten</li>
+<li>Email angles: inspiratiemails met klant-tuinen</li>
+</ul>
+<hr />
+<h1>DEEP DIVE 3 - De Drukke Pragmaticus (#9, Nestera)</h1>
+<h2>2. Demographic Info</h2>
+<ul>
+<li>Naam (fictief): Tom</li>
+<li>Leeftijd: 38</li>
+<li>Levensfase: druk gezin met twee jonge kinderen, beide ouders werken</li>
+<li>Inkomen/koopkracht: modaal, kleinere tuin</li>
+<li>Locatie/markt: NL, voorstad</li>
+<li>Samenvatting: Tom houdt van efficiëntie en wil kippen houden zonder dat het
+  een tweede klusproject naast werk en gezin wordt.</li>
+</ul>
+<h2>3. Core Problem</h2>
+<ul>
+<li>Dominant pijnpunt: onderhoud en schoonmaak kosten te veel van zijn beperkte
+  vrije tijd</li>
+<li>Praktische pijn: weekenden gaan op aan klussen i.p.v. ontspanning</li>
+<li>Emotionele pijn: schuldgevoel dat kinderen/hobby's minder aandacht krijgen</li>
+<li>Sociale pijn: beperkt, vooral persoonlijk tijdsconflict</li>
+</ul>
+<h2>4. Top 5 Emotional Triggers</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Waar komt het vandaan?</th>
+<th>Hoe speelt het product hierop in?</th>
+<th>Voorbeeldzin in klanttaal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zaterdagochtend kwijt aan onderhoud</td>
+<td>Terugkerende tijdsdruk</td>
+<td>Schoonspuiten met de tuinslang</td>
+<td>"Weer een ochtend kwijt aan dat hok."</td>
+</tr>
+<tr>
+<td>Vergelijken met vrienden zonder gedoe</td>
+<td>Lichte jaloezie/motivatie</td>
+<td>Onderhoudsarm kunststof</td>
+<td>"Bij hen kost het gewoon niks aan tijd."</td>
+</tr>
+<tr>
+<td>Jaarlijks beitswerk door het weer</td>
+<td>Vermoeidheid van herhaling</td>
+<td>Geen schilderwerk nodig</td>
+<td>"Weer een jaar dat ik het beitsen moet plannen."</td>
+</tr>
+<tr>
+<td>Twijfel over garantie bij goedkopere opties</td>
+<td>Wil geen herhaalinvestering</td>
+<td>25 jaar garantie</td>
+<td>"Ik wil dit niet over twee jaar overdoen."</td>
+</tr>
+<tr>
+<td>Tijdsdruk door werk en kinderen</td>
+<td>Overbelasting</td>
+<td>Tijdsbesparing als kernbelofte</td>
+<td>"Ik heb simpelweg geen uur extra in mijn week."</td>
+</tr>
+</tbody>
+</table></div>
+<h2>5. Top 5 Deep Fears</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Angst</th>
+<th>Waarom ligt dit gevoelig?</th>
+<th>Effect op koopgedrag</th>
+<th>Interne monoloog [illustratief]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>De hobby wordt een blok aan het been</td>
+<td>Werk-privébalans</td>
+<td>Zoekt bewust het onderhoudsarme hok</td>
+<td>"Wordt dit nog leuk, of alleen een taak?"</td>
+</tr>
+<tr>
+<td>Te weinig tijd aan de kinderen</td>
+<td>Ouderschap-schuldgevoel</td>
+<td>Tijdsbesparing weegt zwaar</td>
+<td>"Ik zou liever met de kinderen buiten zijn dan met een kwast."</td>
+</tr>
+<tr>
+<td>Verkeerde keuze tussen Omlet/Nestera</td>
+<td>Wil niet twee keer moeten kiezen</td>
+<td>Zoekt concrete vergelijking</td>
+<td>"Ik wil dit gewoon één keer goed doen."</td>
+</tr>
+<tr>
+<td>Onverwachte extra kosten achteraf</td>
+<td>Budgetzekerheid</td>
+<td>Let op transparante garantie</td>
+<td>"Straks blijkt er toch weer iets bij te moeten."</td>
+</tr>
+<tr>
+<td>Gezien worden als "makkelijke weg kiezen"</td>
+<td>Sociale norm rond moeite doen</td>
+<td>Wil gemak kunnen verantwoorden</td>
+<td>"Zullen ze denken dat ik de makkelijke weg kies?"</td>
+</tr>
+</tbody>
+</table></div>
+<h2>6. How Fears Affect Relationships</h2>
+<ul>
+<li>Partner: gedeelde frustratie over wie welk weekend het hok onderhoudt</li>
+<li>Kinderen: minder gezamenlijke tijd door klussen</li>
+<li>Vrienden: lichte vergelijking met wie "makkelijkere" hokken heeft</li>
+<li>Collega's: niet relevant</li>
+<li>Zelfbeeld: wil zichzelf zien als iemand die slim kiest, niet als lui</li>
+</ul>
+<h2>7. Painful Quotes From Others [illustratief]</h2>
+<ul>
+<li>Partner: "Kun je dit weekend nou eens niet met dat hok bezig zijn?"</li>
+<li>Vrienden: "Waarom zou je zoveel betalen als je het ook zelf kan onderhouden?"</li>
+<li>Online comments: "Als je kippen houdt, moet je ook tijd willen steken."</li>
+</ul>
+<h2>8. Failed Past Solutions</h2>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Eerdere poging</th>
+<th>Waarom werkte het niet?</th>
+<th>Interne monoloog erna [illustratief]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Houten hok op winkeladvies gekocht</td>
+<td>Onderschatte het onderhoud</td>
+<td>"Ik had geen idee dat het zoveel tijd zou kosten."</td>
+</tr>
+<tr>
+<td>Zelf onderhoudsschema gemaakt</td>
+<td>Hield het niet vol naast werk/gezin</td>
+<td>"Na twee maanden verslapte het schema."</td>
+</tr>
+<tr>
+<td>Omlet overwogen</td>
+<td>Hogere prijs, minder garantie dan Nestera</td>
+<td>"Waarom zou ik meer betalen voor minder garantie?"</td>
+</tr>
+<tr>
+<td>Kinderen bij onderhoud betrokken</td>
+<td>Verantwoordelijkheid bleef bij hem</td>
+<td>"Leuk idee, maar in de praktijk deed ik het toch zelf."</td>
+</tr>
+<tr>
+<td>Steeds uitgesteld</td>
+<td>Probleem bleef gewoon bestaan</td>
+<td>"Ik stelde het steeds uit, en het bleef gewoon zo."</td>
+</tr>
+</tbody>
+</table></div>
+<h2>9. What They Refuse To Do</h2>
+<ul>
+<li>Geen wekelijks terugkerend klusmoment meer</li>
+<li>Geen tweede verkeerde aankoop na eerdere teleurstelling</li>
+<li>Geen tijd besteden aan iets dat hij als vermijdbaar ziet</li>
+<li>Zijn weekend niet structureel opofferen aan onderhoud</li>
+</ul>
+<h2>10. Dream Transformation</h2>
+<ul>
+<li>Praktisch: schoonmaak in minuten, geen jaarlijks beitswerk</li>
+<li>Emotioneel: geen schuldgevoel meer over tijd die naar het hok gaat</li>
+<li>Sociaal: kunnen zeggen "dat hok kost me bijna geen tijd" zonder als lui
+  gezien te worden</li>
+</ul>
+<h2>11. Post-Transformation Quotes [illustratief]</h2>
+<ul>
+<li>Partner: "Sinds dat nieuwe hok zie ik je nooit meer met een kwast in de tuin."</li>
+<li>Vriend: "Jij hebt toch die kippen? Kost je dat nog tijd?"</li>
+<li>De klant zelf: "Ik was vergeten hoe simpel dit kon zijn."</li>
+</ul>
+<h2>12. Market Psychology</h2>
+<ul>
+<li>Wat ze geloven dat succes bepaalt: de juiste productkeuze vooraf, niet
+  toewijding achteraf</li>
+<li>Wat ze moeten loslaten: het idee dat een hobby "moeite moet kosten" om
+  waardevol te zijn</li>
+<li>Wie/wat ze de schuld geven: soms de verkoper die het onderhoud
+  onderschatte, soms zichzelf voor te weinig onderzoek vooraf</li>
+</ul>
+<h3>Top 5 Objections Holding Them Back</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Bezwaar</th>
+<th>Wat zit eronder?</th>
+<th>Hoe we dit adresseren</th>
+<th>Bewijs/content die helpt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Is dit duurder voor hetzelfde als Omlet?"</td>
+<td>Vergelijking nodig</td>
+<td>Garantie/materiaalvoordeel concreet maken</td>
+<td>Nestera vs. Omlet-tabel (fase 2)</td>
+</tr>
+<tr>
+<td>"Hoeveel tijd bespaart dit me echt?"</td>
+<td>Wil concreet bewijs</td>
+<td>Tijdsvoorbeelden (tuinslang i.p.v. beitsen)</td>
+<td>Voor/na-tijdvergelijking in content</td>
+</tr>
+<tr>
+<td>"Is de montage ook tijdrovend?"</td>
+<td>Eenmalige tijdsinvestering</td>
+<td>Duidelijke montage-info</td>
+<td>Stap-voor-stap instructies</td>
+</tr>
+<tr>
+<td>"Gaat dit echt jaren zonder gedoe?"</td>
+<td>Twijfel duurzaamheidsclaim</td>
+<td>25 jaar garantie expliciet</td>
+<td>Garantiedocumentatie</td>
+</tr>
+<tr>
+<td>"Is dit niet zonde van het landelijke gevoel?"</td>
+<td>Esthetische twijfel</td>
+<td>Kunststof ook esthetisch positioneren</td>
+<td>Stijlvolle productfoto's</td>
+</tr>
+</tbody>
+</table></div>
+<h2>13. Messaging Implications</h2>
+<ul>
+<li>Beste hooks: "Kippen houden zonder het als klusproject"</li>
+<li>Beste beloftes: tijdsbesparing, geen jaarlijks onderhoud, garantie</li>
+<li>Gevoelige woorden: tijd, rust, zonder gedoe, weekend</li>
+<li>Woorden om te vermijden: suggestie dat gemak "lui" is - juist framen als slim</li>
+<li>Content angles: tijdvergelijking (uren/jaar hout vs. kunststof), Omlet-vergelijk</li>
+<li>Ad angles: "wat doe jij met je zaterdag" - tijd-gedreven hook</li>
+<li>Product page angles: onderhoudsgemak, garantie, materiaalvoordelen bovenaan</li>
+<li>Email angles: tijdsbesparing-gerichte follow-up na eerste contact</li>
+</ul><nav class="pn"><a href="03_kippenvilla_customer_avatars.html">← Fase 3 · 10 avatars + scorecard</a><a href="05_kippenvilla_brand_guidelines.html">Fase 5 · Merk & brand guidelines →</a></nav></div></body></html>
