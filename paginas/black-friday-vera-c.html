@@ -900,13 +900,13 @@ const MODELLEN = {
     usp: ["Stahoogte in nachthok en ren: nooit meer bukken", "Dak over de hele ren: altijd droog en veilig", "Douglas hout, gaat 10 tot 15 jaar mee", "Afmetingen: 507 x 215 x 305 cm (b x d x h)"],
     fotos: [
       ["img/stahoogte-meisje-in-ren.webp", "Geen kippenhok. Een <u>kippenvilla</u>."],
+      ["img/deluxe-carlo.webp", "Bekend van <u>Carlo Boszhard</u>."],
       ["img/klant-kippen-in-ren.webp", "Ruimte en <u>luxe</u> voor je kippen."],
       ["img/hero-klant-zwart-ren.webp", "Een <u>eyecatcher</u> in je tuin."],
       ["img/ren-gaas-dak.webp", "Veilig tegen <u>roofdieren</u>."],
       ["img/deur-raam-beslag.webp", "Hollands vakmanschap. <u>Douglas hout</u>."],
       ["img/legnest.webp", "Uitneembare legnesten. <u>Weinig onderhoud</u>."],
       ["img/deluxe-zwart-ren.webp", "Superpopulair. Klanten geven een <u>9,5</u>."],
-      ["img/deluxe-carlo.webp", "Bekend van <u>Carlo Boszhard</u>."],
       ["img/product-nachthok-links.webp", "Nachthok links of <u>rechts</u>."],
       ["img/maattekening.webp", "507 x 215 x 305 cm."]
     ],
@@ -933,7 +933,7 @@ Object.entries(MODELLEN).forEach(([key, m]) => {
 const galImg = $("galImg"), galKop = $("galKop"), thumbs = $("thumbs");
 function toonFoto(i){
   const f = MODELLEN[staat.model].fotos[i];
-  galImg.src = f[0]; galImg.alt = MODELLEN[staat.model].naam; galKop.innerHTML = f[1];
+  galImg.src = f[0]; galImg.style.objectPosition = f[0].includes("carlo") ? "left center" : ""; galImg.alt = MODELLEN[staat.model].naam; galKop.innerHTML = f[1];
   thumbs.querySelectorAll(".thumb").forEach((t, k) => t.classList.toggle("on", k === i));
 }
 function bouwGalerij(){
@@ -941,7 +941,7 @@ function bouwGalerij(){
   MODELLEN[staat.model].fotos.forEach((f, i) => {
     const b = document.createElement("button");
     b.className = "thumb"; b.type = "button"; b.setAttribute("aria-label", "Foto " + (i + 1));
-    b.innerHTML = '<img src="' + f[0].replace("width=1200", "width=200") + '" alt="" loading="lazy">';
+    b.innerHTML = '<img src="' + f[0].replace("width=1200", "width=200") + '" alt="" loading="lazy"' + (f[0].includes("carlo") ? ' style="object-position:left center"' : '') + '>';
     b.addEventListener("click", () => toonFoto(i));
     thumbs.appendChild(b);
   });
