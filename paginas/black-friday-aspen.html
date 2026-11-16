@@ -687,19 +687,20 @@ table.hk td.k{background:#f1faf5}
 
 <section class="s" id="vergelijk">
   <div class="wrap">
-    <div class="kop"><h2>Aspen 6 of Aspen 10, met of zonder ren?</h2><p>Hetzelfde gladde kunststof en dezelfde 10 jaar garantie. Het verschil zit in de ruimte en de ren.</p></div>
+    <div class="kop"><h2>Aspen 6 of Aspen 10?</h2><p>Hetzelfde gladde kunststof en dezelfde 10 jaar garantie. Het verschil zit in de ruimte.</p></div>
     <div class="vgl-wrap">
       <table class="vgl">
-        <thead><tr><th></th><th>Aspen 6<small id="v_6nee"></small></th><th>Aspen 6 + ren<small id="v_6ja"></small></th><th>Aspen 10<small id="v_10nee"></small></th><th>Aspen 10 + ren<small id="v_10ja"></small></th></tr></thead>
+        <thead><tr><th></th><th>Aspen 6<small id="v_6nee"></small></th><th>Aspen 10<small id="v_10nee"></small></th></tr></thead>
         <tbody>
-          <tr><td>Ons advies</td><td>Max. 6 leghennen of 10 krielkippen</td><td>Max. 6 leghennen of 10 krielkippen</td><td>8 &agrave; 10 leghennen</td><td>8 &agrave; 10 leghennen</td></tr>
-          <tr><td>Zitstokken en legnesten</td><td>2 en 2</td><td>2 en 2</td><td>3 en 3</td><td>3 en 3</td></tr>
-          <tr><td>Nachthok (b x d)</td><td>86 x 63 cm</td><td>86 x 63 cm</td><td>114 x 90 cm</td><td>114 x 90 cm</td></tr>
-          <tr><td>Ren van 2 meter met anti-graafstrook</td><td class="nee">&ndash;</td><td class="ja">&#10003;</td><td class="nee">&ndash;</td><td class="ja">&#10003;</td></tr>
-          <tr><td>27 cm verhoogd, beschutting eronder</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td></tr>
-          <tr><td>10 jaar garantie</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td></tr>
-          <tr><td>Gratis Smart Auto Door t/m 30 november</td><td class="nee">&ndash;</td><td class="nee">&ndash;</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td></tr>
-          <tr><td></td><td><a class="btn btn-goud" href="#box" data-kies="6|nee">Kies</a></td><td><a class="btn btn-goud" href="#box" data-kies="6|ja">Kies</a></td><td><a class="btn btn-goud" href="#box" data-kies="10|nee">Kies</a></td><td><a class="btn btn-goud" href="#box" data-kies="10|ja">Kies</a></td></tr>
+          <tr><td>Ons advies</td><td>Max. 6 leghennen of 10 krielkippen</td><td>8 &agrave; 10 leghennen</td></tr>
+          <tr><td>Afmetingen (b x d x h)</td><td>122 x 125 x 99 cm</td><td>150 x 153 x 100 cm</td></tr>
+          <tr><td>Nachthok (b x d)</td><td>86 x 63 cm</td><td>114 x 90 cm</td></tr>
+          <tr><td>Zitstokken en legnesten</td><td>2 en 2</td><td>3 en 3</td></tr>
+          <tr><td>Gewicht</td><td>30 kg</td><td>51 kg</td></tr>
+          <tr><td>27 cm verhoogd, beschutting eronder</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td></tr>
+          <tr><td>10 jaar garantie</td><td class="ja">&#10003;</td><td class="ja">&#10003;</td></tr>
+          <tr><td>Gratis Smart Auto Door t/m 30 november</td><td class="nee">&ndash;</td><td class="ja">&#10003;</td></tr>
+          <tr><td></td><td><a class="btn btn-goud" href="#box" data-kies="6|nee">Kies Aspen 6</a></td><td><a class="btn btn-goud" href="#box" data-kies="10|nee">Kies Aspen 10</a></td></tr>
         </tbody>
       </table>
     </div>
@@ -828,7 +829,7 @@ function render(){
   $("ctaKoop").textContent = metDeur ? "In winkelwagen: gratis deuropener" : "In winkelwagen";
   for (const [k, hh] of Object.entries(HOK)) {
     const p = k.startsWith("10") ? hh.v["bezorg|deur"][1] : hh.v["bezorg"][1];
-    $("v_" + k.replace("|","")).textContent = eur(p);
+    { const el = $("v_" + k.replace("|","")); if (el) el.textContent = eur(p); }
   }
   calc();
 }
