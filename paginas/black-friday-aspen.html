@@ -409,6 +409,15 @@ html,body{overflow-x:clip}
 .deal .tag{position:absolute;top:-9px;right:8px;background:#111;color:#e7c27a;font:700 .66rem/1 Montserrat,sans-serif;padding:4px 7px;border-radius:999px;letter-spacing:.04em}
 .prijs .van{color:#8a8a85;text-decoration:line-through;font-size:1.1rem;margin-left:8px;font-weight:500}
 .prijs .bespaar{display:inline-block;margin-left:8px;background:#111;color:#e7c27a;font:700 .78rem/1 Montserrat,sans-serif;padding:6px 9px;border-radius:999px;vertical-align:middle}
+.extra{margin:14px 0 4px;background:#fff;border:1px solid #e3ddd3;border-radius:12px;padding:12px 14px}
+.extra h4{margin:0 0 6px;font:700 1rem Montserrat,sans-serif;color:#094a60}
+.extra label{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid #eee;cursor:pointer}
+.extra label:first-of-type{border-top:0}
+.extra img{width:48px;height:48px;object-fit:contain;border-radius:6px;background:#f4f4f2;flex:none}
+.extra .nm{flex:1;font-size:.9rem;line-height:1.3;color:#1d1d1b}
+.extra .pr{font-weight:700;white-space:nowrap;font-size:.92rem}
+.extra input{width:20px;height:20px;accent-color:#2e8b57;flex:none;margin:0}
+.extra .tot{display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:2px solid #094a60;font-weight:700}
 .a6info{background:#f7f3ec;border-radius:10px;padding:10px 12px;font-size:.88rem;margin:8px 0 0}
 .calc{background:#fff;border:1px solid #e3ddd3;border-radius:14px;padding:16px;margin-top:14px}
 .calc .r{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid #eee}
@@ -512,6 +521,12 @@ table.hk td.k{background:#f1faf5}
       </div>
 
       <div class="prijs"><span class="nu" id="prijsNu"></span><span class="van" id="prijsVan"></span><span class="bespaar" id="bespaar"></span></div>
+
+      <div class="extra" id="extra">
+        <h4>Maak jouw villa compleet:</h4>
+        <div id="extraLijst"></div>
+        <div class="tot" id="extraTot" hidden><span>Totaal met extra's</span><span id="extraTotBedrag"></span></div>
+      </div>
 
       <ul class="usp" id="usp"></ul>
 
@@ -757,6 +772,8 @@ table.hk td.k{background:#f1faf5}
 <script>
 const ACTIE_EIND = new Date("2026-11-30T23:59:59+01:00");
 const DEUR_WAARDE = 199;
+const EXTRA = {"bak6": ["Opvangbakken Medium + Aspen 6 (2 stuks)", 59, 40410910752904, "https://cdn.shopify.com/s/files/1/0359/8948/7752/products/Kippenvilla_opvangbakken_kippenhok_kunststof_nestera_1.jpg?v=1654591370&width=120"], "bak10": ["Opvangbakken Aspen 10 (3 stuks)", 79, 59587003187532, "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/ASpen-10-Trays-opvangbakken.webp?v=1793113443&width=120"], "deur": ["Nestera Automatische deuropener Aspen", 199, 52079277244748, "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/NesterakunststofkippenhokAspen_automatischedeur_Kippenvilla.webp?v=1740847764&width=120"], "cam": ["Nestera WiFi Camera voor Kippenhok", 119, 52082910298444, "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/WIFICAMwhitebackground.webp?v=1740937117&width=120"]};
+const gekozen = new Set();
 const U = {"a6_wit": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/NesterakunststofkippenhokAspen_kippenhokvoor6kippen_Kippenvilla_4.webp?width=1200", "a6_tuin": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Aspen_6_kunststof_kippenhok_Nestera_Kippenvilla.webp?width=1200", "a6_open": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Aspen_6_kunststof_kippenhok_Nestera_Kippenvilla_binnenkant.webp?width=1200", "a6_kippen_binnen": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Aspen_6_kunststof_kippenhok_Nestera_Kippenvilla_kippen.webp?width=1200", "a6_vrouw": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Aspen_6_kunststof_kippenhok_Nestera_Kippenvilla_6.webp?width=1200", "a6_maat": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/NesterakunststofkippenhokAspen_kippenhokvoor6kippen_Kippenvilla_afmetingen.webp?width=1200", "a6_ren": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Aspen_6_kippenren_Kippenvilla.webp?width=1200", "a6_ren_kinderen": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Aspen_6_kippenren_Kippenvilla_met_kinderen.webp?width=1200", "a6_ren_detail": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Aspen_6_kippenren_Kippenvilla_detail.webp?width=1200", "slot": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Nestera_Aspen_slot_deur_Kippenvilla.webp?width=1200", "deur_hand": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Nestera_Aspen_6_kippenvilla_kunststof_kippenhok_deurtje.png?width=1200", "zitstok_render": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/NesterakunststofkippenhokAspen_kippenhokvoor6kippen_Kippenvilla_bovenaanzicht_zitstokken.webp?width=1200", "a10_tuin": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/NesterakunststofkippenhokAspen_kippenhokvoor10kippen_Kippenvilla_5.webp?width=1200", "a10_tuin2": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/NesterakunststofkippenhokAspen_kippenhokvoor10kippen_Kippenvilla_1.webp?width=1200", "a10_open": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/NesterakunststofkippenhokAspen_kippenhokvoor10kippen_Kippenvilla_interieur_zitstokken.webp?width=1200", "a10_boven": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/NesterakunststofkippenhokAspen_kippenhokvoor10kippen_Kippenvilla_bovenaanzichtwebp.webp?width=1200", "a10_maat": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/NesterakunststofkippenhokAspen_kippenhokvoor10kippen_Kippenvilla_afmetingen.webp?width=1200", "a10_ren": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Aspen_kippenren_kippenvilla.webp?width=1200", "a10_ren2": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Aspen_kippenren_kippenvilla_1.webp?width=1200", "a10_ren_render": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Nestera_Kunststof_kippenhok_Aspen_10_met_kippenren.png?width=1200", "antigraaf": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Nestera_Kunststof_kippenhok_Aspen_10_met_kippenren_antigraafrand_kippenvilla.png?width=1200", "kippen_boven": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Nestera_Aspen_10_kippenvilla_kunststof_kippenhok_interieur.png?width=1200", "a10_vrouw": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Nestera_Aspen_10_kippenvilla_kunststof_kippenhok_met_kippen.png?width=1200", "twee": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Aspen_6_Aspen_10.webp?width=1200", "deur": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/NesterakunststofkippenhokAspen_automatischedeur_Kippenvilla.webp?width=1200", "ventilatie": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Nestera_kunststof_kippenhok_Aspen_kippenhok_Kippenvilla_detail.webp?width=1200", "overons": "https://cdn.shopify.com/s/files/1/0359/8948/7752/files/Over_ons_banner-2.png?width=1200"};
 /* prijzen en variant-id's uit Shopify, 16-11-2026 */
 const HOK = {
@@ -825,7 +842,18 @@ function render(){
   $("usp").innerHTML = usp.map(u => '<li class="ok">' + u + "</li>").join("");
   const sp = SPECS[st.maat].slice(); if (st.ren === "ja") sp.splice(2, 0, REN_SPEC);
   $("specs").innerHTML = sp.map(r => "<tr><th>" + r[0] + "</th><td>" + r[1] + "</td></tr>").join("");
-  $("ctaKoop").href = "https://kippenvilla.nl/products/" + h.handle + "?variant=" + id;
+  /* upsells: opvangbak past bij het gekozen model; de deuropener alleen als hij niet al gratis bij de deal zit */
+  const lijst = [a10 ? "bak10" : "bak6"].concat(metDeur ? [] : ["deur"], ["cam"]);
+  for (const k of [...gekozen]) if (!lijst.includes(k)) gekozen.delete(k);
+  $("extraLijst").innerHTML = lijst.map(k => '<label><img src="' + EXTRA[k][3] + '" alt=""><span class="nm">' + EXTRA[k][0] + '</span><span class="pr">' + eur(EXTRA[k][1]) + '</span><input type="checkbox" data-x="' + k + '"' + (gekozen.has(k) ? " checked" : "") + "></label>").join("");
+  $("extraLijst").querySelectorAll("input").forEach(c => c.addEventListener("change", () => { c.checked ? gekozen.add(c.dataset.x) : gekozen.delete(c.dataset.x); render(); }));
+  const extraSom = [...gekozen].reduce((t, k) => t + EXTRA[k][1], 0);
+  $("extraTot").hidden = !gekozen.size; $("extraTotBedrag").textContent = eur(prijs + extraSom);
+  $("prijsSticky").textContent = eur(prijs + extraSom);
+  if (gekozen.size) $("stickySub").textContent = "Incl. " + gekozen.size + (gekozen.size === 1 ? " extra" : " extra's");
+  /* met extra's: Shopify-winkelwagenlink met alle producten tegelijk */
+  $("ctaKoop").href = gekozen.size ? "https://kippenvilla.nl/cart/" + [id + ":1"].concat([...gekozen].map(k => EXTRA[k][2] + ":1")).join(",")
+                                   : "https://kippenvilla.nl/products/" + h.handle + "?variant=" + id;
   $("ctaKoop").textContent = metDeur ? "In winkelwagen: gratis deuropener" : "In winkelwagen";
   for (const [k, hh] of Object.entries(HOK)) {
     const p = k.startsWith("10") ? hh.v["bezorg|deur"][1] : hh.v["bezorg"][1];
