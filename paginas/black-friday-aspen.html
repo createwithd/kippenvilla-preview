@@ -850,9 +850,8 @@ function render(){
   $("extraTot").hidden = !gekozen.size; $("extraTotBedrag").textContent = eur(prijs + extraSom);
   $("prijsSticky").textContent = eur(prijs + extraSom);
   if (gekozen.size) $("stickySub").textContent = "Incl. " + gekozen.size + (gekozen.size === 1 ? " extra" : " extra's");
-  /* met extra's: Shopify-winkelwagenlink met alle producten tegelijk */
-  $("ctaKoop").href = gekozen.size ? "https://kippenvilla.nl/cart/" + [id + ":1"].concat([...gekozen].map(k => EXTRA[k][2] + ":1")).join(",")
-                                   : "https://kippenvilla.nl/products/" + h.handle + "?variant=" + id;
+  /* Shopify-winkelwagenlink: hok plus aangevinkte extra's, direct naar de kassa */
+  $("ctaKoop").href = "https://kippenvilla.nl/cart/" + [id + ":1"].concat([...gekozen].map(k => EXTRA[k][2] + ":1")).join(",");
   $("ctaKoop").textContent = metDeur ? "In winkelwagen: gratis deuropener" : "In winkelwagen";
   for (const [k, hh] of Object.entries(HOK)) {
     const p = k.startsWith("10") ? hh.v["bezorg|deur"][1] : hh.v["bezorg"][1];
