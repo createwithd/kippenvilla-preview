@@ -763,7 +763,7 @@ table.hk td.k{background:#f1faf5}
 </footer>
 
 <div class="sticky" id="sticky">
-  <div class="p"><span id="prijsSticky"></span><small id="stickySub">Gratis deuropener + gratis bezorgd</small></div>
+  <div class="p"><span id="prijsSticky"></span><small id="stickySub">Gratis deuropener · ophalen</small></div>
   <a class="btn btn-koop" href="#box">Bestellen</a>
   <a class="wa" href="https://wa.me/31851305813" aria-label="WhatsApp">&#128172;</a>
 </div>
@@ -829,7 +829,7 @@ function render(){
   $("bespaar").textContent = metDeur ? (korting > 0 ? "+ gratis deuropener · " + eur(voordeel) + " voordeel" : "+ gratis deuropener t.w.v. € 199") : (korting > 0 ? eur(korting) + " voordeel" : "");
   $("bespaar").hidden = !$("bespaar").textContent;
   $("eindNaam").textContent = h.naam + (metDeur ? ", met gratis Smart Auto Door en gratis bezorgd" : (st.lever === "ophaal" ? ", op te halen in Kerkdriel" : ", gratis bezorgd"));
-  $("stickySub").textContent = metDeur ? "Gratis deuropener + gratis bezorgd" : (st.lever === "ophaal" ? "Ophalen in Kerkdriel" : "Gratis bezorgd");
+  $("stickySub").textContent = (metDeur ? "Gratis deuropener · " : "") + (st.lever === "ophaal" ? "ophalen" : "gratis bezorgd");
   const kD = HOK[st.maat + "|" + st.ren].v;
   if (a10) $("kortingTxt").textContent = "Geen deuropener nodig? Je betaalt " + eur(kD[st.lever + "|korting"][1]) + ".";
   const opBez = a10 ? kD["bezorg|" + st.deal][1] - kD["ophaal|" + st.deal][1] : kD["bezorg"][1] - kD["ophaal"][1];
